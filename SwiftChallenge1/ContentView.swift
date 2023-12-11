@@ -8,43 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var sunColor: Color = .black
-    @State private var cloudColor: Color = .black
-    @State private var rainColor: Color = .black
-    @State private var sunText = false
-    @State private var cloudText = false
-    @State private var rainText = false
+    @State private var isSunTapped = false
+    @State private var isCloudTapped = false
+    @State private var isRainTapped = false
 
     var body: some View {
-        VStack {
-            HStack {
+        VStack(spacing: 30) {
+            HStack(spacing: 40) {
                 Button {
-                    sunColor = .orange
-                    sunText = true
+                    isSunTapped = true
                 } label: {
                     VStack {
                         Image(systemName: "sun.min.fill")
                             .resizable()
                             .frame(width: 48, height: 48)
-                            .foregroundColor(sunColor)
-                        if sunText {
+                            .foregroundStyle(isSunTapped ? .orange : .black)
+                        if isSunTapped {
                             Text("晴れ")
                                 .foregroundColor(.black)
                                 .font(.headline)
                         }
                     }
                 }
-                .padding(.trailing, 40)
                 Button {
-                    cloudColor = .gray
-                    cloudText = true
+                    isCloudTapped = true
                 } label: {
                     VStack {
                         Image(systemName: "cloud.fill")
                             .resizable()
                             .frame(width: 48, height: 48)
-                            .foregroundColor(cloudColor)
-                        if cloudText {
+                            .foregroundStyle(isCloudTapped ? .gray : .black)
+                        if isCloudTapped {
                             Text("曇り")
                                 .foregroundColor(.black)
                                 .font(.headline)
@@ -52,34 +46,28 @@ struct ContentView: View {
                     }
                 }
                 Button {
-                    rainColor = .blue
-                    rainText = true
+                    isRainTapped = true
                 } label: {
                     VStack {
                         Image(systemName: "cloud.heavyrain.fill")
                             .resizable()
                             .frame(width: 48, height: 48)
-                            .foregroundColor(rainColor)
-                        if rainText {
+                            .foregroundStyle(isRainTapped ? .blue : .black)
+                        if isRainTapped {
                             Text("雨")
                                 .foregroundColor(.black)
                                 .font(.headline)
                         }
                     }
                 }
-                .padding(.leading, 40)
             }
             Button {
-                sunColor = .black
-                cloudColor = .black
-                rainColor = .black
-                sunText = false
-                cloudText = false
-                rainText = false
+                isSunTapped = false
+                isCloudTapped = false
+                isRainTapped = false
             } label: {
                 Text("リセット")
             }
-            .padding(.top, 40)
         }
     }
 }
