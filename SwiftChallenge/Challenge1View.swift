@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct Challenge1View: View {
     @State private var isSunTapped = false
     @State private var isCloudTapped = false
     @State private var isRainTapped = false
@@ -73,5 +73,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    Challenge1View()
 }
