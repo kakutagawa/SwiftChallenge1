@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  SwiftChallenge1
+//  SwiftChallenge
 //
 //  Created by 芥川浩平 on 2023/12/10.
 //
