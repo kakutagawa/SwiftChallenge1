@@ -7,16 +7,30 @@
 
 import SwiftUI
 
+final class Profile: ObservableObject {
+    @Published var name: String
+    @Published var age: Int
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+
+    func happyBirthday() {
+        age += 1
+    }
+}
+
 struct Challenge2View: View {
-    @State private var myAge = profile.age
+    @StateObject private var profile = Profile(name: "芥川", age: 25)
 
     var body: some View {
         VStack(spacing: 20) {
             Text("名前: \(profile.name)")
-            Text("年齢: \(myAge)歳")
-            Button {
+            Text("年齢: \(profile.age)歳")
+            Button(action: {
                 profile.happyBirthday()
-            } label: {
+            }) {
                 HStack {
                     Image(systemName: "birthday.cake.fill")
                     Text("誕生日")
@@ -25,14 +39,6 @@ struct Challenge2View: View {
         }
     }
 }
-final class Profile {
-    let name = "芥川"
-    var age = 25
-    func happyBirthday() {
-        age = age + 1
-    }
-}
-private let profile = Profile()
 
 #Preview {
     Challenge2View()
