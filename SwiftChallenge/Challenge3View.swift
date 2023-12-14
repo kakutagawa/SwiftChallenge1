@@ -14,12 +14,24 @@ struct Challenge3Profile: Identifiable {
 }
 
 struct Challenge3View: View {
-    let users: [Challenge3Profile]
+    var users: [Challenge3Profile] = []
 
-
+    init() {
+        var userList = [Challenge3Profile]()
+        for i in 1...100 {
+            let user = Challenge3Profile(name: "ユーザー\(i)", age: i)
+            userList.append(user)
+        }
+        self.users = userList
+    }
     var body: some View {
         ScrollView {
-            
+            HStack {
+                Text("名前：\(user.name)")
+                Spacer()
+                Text("年齢：\(user.age)歳")
+
+            }
         }
     }
 }
