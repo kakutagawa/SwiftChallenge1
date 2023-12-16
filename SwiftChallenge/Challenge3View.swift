@@ -26,11 +26,14 @@ struct Challenge3View: View {
     }
     var body: some View {
         ScrollView {
-            HStack {
-                Text("名前：\(user.name)")
-                Spacer()
-                Text("年齢：\(user.age)歳")
-
+            ForEach(users) { user in
+                HStack {
+                    Text("名前：\(user.name)")
+                    Spacer()
+                    Text("年齢：\(user.age)歳")
+                }
+                .frame(height: 60)
+                .padding(.horizontal, 32)
             }
         }
     }
