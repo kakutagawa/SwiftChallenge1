@@ -14,8 +14,10 @@ struct Challenge3Profile: Identifiable {
 }
 
 struct Challenge3View: View {
-    let users: [Challenge3Profile] = (1...100).map{ Challenge3Profile(name: "ユーザー\($0)", age: $0) }
-    
+    private let users: [Challenge3Profile] = (1...100).map {
+        Challenge3Profile(name: "ユーザー\($0)", age: $0)
+    }
+
     var body: some View {
         ScrollView {
             ForEach(users) { user in
