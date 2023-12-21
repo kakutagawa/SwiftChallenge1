@@ -17,7 +17,7 @@ import SwiftUI
 
 struct Challenge4View: View {
     @State private var selectedIcon: String? = "mic.fill"
-    @State private var selectedColor: Color? = .green
+    @State private var selectedColor: Color? = .red
 
     var body: some View {
         let iconOptions = ["mic.fill", "message.fill", "bubble.fill", "phone.fill", "video.fill"]
