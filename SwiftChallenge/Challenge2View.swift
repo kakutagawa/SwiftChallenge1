@@ -8,13 +8,8 @@
 import SwiftUI
 
 final class Profile: ObservableObject {
-    var name: String = "芥川"
+    let name: String = "芥川"
     @Published var age: Int = 25
-
-    init(name: String, age: Int) {
-        self.name = name
-        self.age = age
-    }
 
     func happyBirthday() {
         age += 1
@@ -22,7 +17,7 @@ final class Profile: ObservableObject {
 }
 
 struct Challenge2View: View {
-    @StateObject private var profile = Profile(name: "芥川", age: 25)
+    @StateObject private var profile = Profile()
 
     var body: some View {
         VStack(spacing: 20) {
