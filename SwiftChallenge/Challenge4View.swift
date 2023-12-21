@@ -16,7 +16,7 @@ import SwiftUI
 //}
 
 struct Challenge4View: View {
-    @State private var selectedIcon: String? = "mic.fill"
+    @State private var selectedIcon: String = "mic.fill"
     @State private var selectedColor: Color? = .red
 
     var body: some View {
@@ -41,7 +41,7 @@ struct Challenge4View: View {
                     }
                 }
             }
-            if let selectedIcon = selectedIcon, let selectedColor = selectedColor {
+            if let selectedColor = selectedColor {
                 Image(systemName: selectedIcon)
                     .resizable()
                     .scaledToFit()
