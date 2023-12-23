@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Icons: String, CaseIterable, Identifiable {
+enum Icons: String, CaseIterable {
     var id: String{ self.rawValue }
     case mic = "mic.fill"
     case message = "message.fill"
@@ -17,7 +17,7 @@ enum Icons: String, CaseIterable, Identifiable {
 }
 
 struct Challenge4View: View {
-    @State private var selectedIcon: String = "mic.fill"
+    @State private var selectedIcon = Icons.mic
     @State private var selectedColor: Color = .red
     let colorOptions: [Color] = [.red, .blue, .yellow, .green, .orange, .purple]
 
@@ -37,10 +37,14 @@ struct Challenge4View: View {
                         Circle()
                             .fill(color)
                             .frame(width: 28, height: 28)
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.black, lineWidth: selectedColor == color ? 3 : 0)
+                            )
                     }
                 }
             }
-            Image(systemName: selectedIcon)
+            Image(systemName: selectedIcon.rawValue)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 48)
