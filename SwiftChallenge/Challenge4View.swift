@@ -19,7 +19,7 @@ enum Icons: String, CaseIterable {
 struct Challenge4View: View {
     @State private var selectedIcon = Icons.mic
     @State private var selectedColor: Color = .red
-    let colorOptions: [Color] = [.red, .blue, .yellow, .green, .orange, .purple]
+    private let colorOptions: [Color] = [.red, .blue, .yellow, .green, .orange, .purple]
 
     var body: some View {
         VStack(spacing: 48) {

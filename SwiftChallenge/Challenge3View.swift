@@ -5,7 +5,6 @@
 //  Created by 芥川浩平 on 2023/12/13.
 //
 
-
 import SwiftUI
 
 struct Challenge3Profile: Identifiable {
