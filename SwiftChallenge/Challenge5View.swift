@@ -38,7 +38,7 @@ struct Challenge5View: View {
     @StateObject var apiClient = APIClient()
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
+            LazyVStack(alignment: .leading) {
                 ForEach(apiClient.todos, id: \.id) { todoList in
                     HStack(spacing: 24) {
                         VStack(spacing: 8) {
@@ -57,7 +57,7 @@ struct Challenge5View: View {
                     .frame(height: 80)
                     Divider()
                 }
-                .padding([.leading, .trailing], 16)
+                .padding(.horizontal, 16)
             }
         }
         .onAppear {
