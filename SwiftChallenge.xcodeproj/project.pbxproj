@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D32F4532B289D3000BD9D9C /* Challenge2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32F4522B289D3000BD9D9C /* Challenge2View.swift */; };
 		1D48A7AE2B31C407007FE6A7 /* Challenge4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48A7AD2B31C407007FE6A7 /* Challenge4View.swift */; };
+		1D48A7E82B38F90D007FE6A7 /* Challenge5View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48A7E72B38F90D007FE6A7 /* Challenge5View.swift */; };
 		1D804F132B29F790004C6529 /* Challenge3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D804F122B29F790004C6529 /* Challenge3View.swift */; };
 		1D8F384D2B256A3D003B99E7 /* SwiftChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F384C2B256A3D003B99E7 /* SwiftChallengeApp.swift */; };
 		1D8F384F2B256A3D003B99E7 /* Challenge1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F384E2B256A3D003B99E7 /* Challenge1View.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		1D32F4522B289D3000BD9D9C /* Challenge2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge2View.swift; sourceTree = "<group>"; };
 		1D48A7AD2B31C407007FE6A7 /* Challenge4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4View.swift; sourceTree = "<group>"; };
+		1D48A7E72B38F90D007FE6A7 /* Challenge5View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge5View.swift; sourceTree = "<group>"; };
 		1D804F122B29F790004C6529 /* Challenge3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge3View.swift; sourceTree = "<group>"; };
 		1D8F38492B256A3D003B99E7 /* SwiftChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D8F384C2B256A3D003B99E7 /* SwiftChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChallengeApp.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				1D32F4522B289D3000BD9D9C /* Challenge2View.swift */,
 				1D804F122B29F790004C6529 /* Challenge3View.swift */,
 				1D48A7AD2B31C407007FE6A7 /* Challenge4View.swift */,
+				1D48A7E72B38F90D007FE6A7 /* Challenge5View.swift */,
 				1D8F38502B256A3F003B99E7 /* Assets.xcassets */,
 				1D8F38522B256A3F003B99E7 /* Preview Content */,
 			);
@@ -270,6 +273,7 @@
 				1D804F132B29F790004C6529 /* Challenge3View.swift in Sources */,
 				1D8F384D2B256A3D003B99E7 /* SwiftChallengeApp.swift in Sources */,
 				1D32F4532B289D3000BD9D9C /* Challenge2View.swift in Sources */,
+				1D48A7E82B38F90D007FE6A7 /* Challenge5View.swift in Sources */,
 				1D48A7AE2B31C407007FE6A7 /* Challenge4View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
