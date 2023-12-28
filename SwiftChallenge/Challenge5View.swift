@@ -36,28 +36,34 @@ final class APIClient: ObservableObject {
 
 struct Challenge5View: View {
     @StateObject var apiClient = APIClient()
+    @State private var selectedTodo: Todo?
+
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading) {
-                ForEach(apiClient.todos, id: \.id) { todoList in
-                    HStack(spacing: 24) {
-                        VStack(spacing: 8) {
-                            Text("ユーザーID: \(todoList.userId)")
-                                .font(.caption)
-                            if todoList.completed  {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .resizable()
-                                    .frame(width: 16, height: 16)
-                                    .foregroundStyle(.green)
+        NavigationView {
+            ScrollView {
+                LazyVStack(alignment: .leading) {
+                    ForEach(apiClient.todos, id: \.id) { todoList in
+                        NavigationLink(destination: ToDoDetailView(todo: todoList)) {
+                            HStack(spacing: 24) {
+                                VStack(spacing: 8) {
+                                    Text("ユーザーID: \(todoList.userId)")
+                                        .font(.caption)
+                                    if todoList.completed  {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .resizable()
+                                            .frame(width: 16, height: 16)
+                                            .foregroundStyle(.green)
+                                    }
+                                }
+                                Text("\(todoList.title)")
+                                    .font(.callout)
                             }
+                            .frame(height: 80)
+                            Divider()
                         }
-                        Text("\(todoList.title)")
-                            .font(.callout)
                     }
-                    .frame(height: 80)
-                    Divider()
+                    .padding(.horizontal, 16)
                 }
-                .padding(.horizontal, 16)
             }
         }
         .onAppear {
