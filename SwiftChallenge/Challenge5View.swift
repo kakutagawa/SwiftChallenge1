@@ -39,7 +39,7 @@ struct Challenge5View: View {
     @State private var selectedTodo: Todo?
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     ForEach(apiClient.todos, id: \.id) { todoList in
