@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Todo: Codable {
+struct Todo: Codable, Hashable {
     let id: Int
     let userId: Int
     let title: String
@@ -42,28 +42,31 @@ struct Challenge5View: View {
         NavigationStack {
             ScrollView {
                 LazyVStack(alignment: .leading) {
-                    ForEach(apiClient.todos, id: \.id) { todoList in
-                        NavigationLink(destination: ToDoDetailView(todo: todoList)) {
+                    ForEach(apiClient.todos, id: \.id) { todo in
+                        NavigationLink(value: todo) {
                             HStack(spacing: 24) {
                                 VStack(spacing: 8) {
-                                    Text("ユーザーID: \(todoList.userId)")
+                                    Text("ユーザーID: \(todo.userId)")
                                         .font(.caption)
-                                    if todoList.completed  {
+                                    if todo.completed  {
                                         Image(systemName: "checkmark.circle.fill")
                                             .resizable()
                                             .frame(width: 16, height: 16)
                                             .foregroundStyle(.green)
                                     }
                                 }
-                                Text("\(todoList.title)")
+                                Text("\(todo.title)")
                                     .font(.callout)
                             }
                             .frame(height: 80)
-                            Divider()
                         }
                         .foregroundStyle(.black)
+                        Divider()
                     }
                     .padding(.horizontal, 16)
+                    .navigationDestination(for: Todo.self) { todo in
+                        ToDoDetailView(todoDetail: todo)
+                    }
                 }
             }
         }
@@ -76,21 +79,25 @@ struct Challenge5View: View {
 }
 
 struct ToDoDetailView: View {
-    let todo: Todo
+    let todoDetail: Todo
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("ユーザーID: \(todo.userId)")
+            Text("ユーザーID: \(todoDetail.userId)")
                 .font(.caption)
-            Text("タイトル: \(todo.title)")
+            Text("タイトル: \(todoDetail.title)")
                 .font(.headline)
 
         }
         .padding(16)
-        .navigationTitle(todo.completed ? "完了タスク" : "非完了タスク")
+        .navigationTitle(todoDetail.completed ? "完了タスク" : "非完了タスク")
     }
 }
 
 #Preview {
     Challenge5View()
+}
+
+#Preview {
+    ToDoDetailView(todoDetail: Todo(id: 1, userId: 1, title: "Hello", completed: false))
 }
