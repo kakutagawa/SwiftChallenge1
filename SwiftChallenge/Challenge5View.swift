@@ -64,9 +64,9 @@ struct Challenge5View: View {
                         Divider()
                     }
                     .padding(.horizontal, 16)
-                    .navigationDestination(for: Todo.self) { todo in
-                        ToDoDetailView(todoDetail: todo)
-                    }
+                }
+                .navigationDestination(for: Todo.self) { todo in
+                    ToDoDetailView(todoDetail: todo)
                 }
             }
         }
@@ -78,26 +78,6 @@ struct Challenge5View: View {
     }
 }
 
-struct ToDoDetailView: View {
-    let todoDetail: Todo
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("ユーザーID: \(todoDetail.userId)")
-                .font(.caption)
-            Text("タイトル: \(todoDetail.title)")
-                .font(.headline)
-
-        }
-        .padding(16)
-        .navigationTitle(todoDetail.completed ? "完了タスク" : "非完了タスク")
-    }
-}
-
 #Preview {
     Challenge5View()
-}
-
-#Preview {
-    ToDoDetailView(todoDetail: Todo(id: 1, userId: 1, title: "Hello", completed: false))
 }
