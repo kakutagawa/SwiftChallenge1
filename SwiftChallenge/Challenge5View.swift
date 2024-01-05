@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Todo: Codable {
+struct Todo: Codable, Hashable {
     let id: Int
     let userId: Int
     let title: String
@@ -36,28 +36,38 @@ final class APIClient: ObservableObject {
 
 struct Challenge5View: View {
     @StateObject var apiClient = APIClient()
+    @State private var selectedTodo: Todo?
+
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading) {
-                ForEach(apiClient.todos, id: \.id) { todoList in
-                    HStack(spacing: 24) {
-                        VStack(spacing: 8) {
-                            Text("ユーザーID: \(todoList.userId)")
-                                .font(.caption)
-                            if todoList.completed  {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .resizable()
-                                    .frame(width: 16, height: 16)
-                                    .foregroundStyle(.green)
+        NavigationStack {
+            ScrollView {
+                LazyVStack(alignment: .leading) {
+                    ForEach(apiClient.todos, id: \.id) { todo in
+                        NavigationLink(value: todo) {
+                            HStack(spacing: 24) {
+                                VStack(spacing: 8) {
+                                    Text("ユーザーID: \(todo.userId)")
+                                        .font(.caption)
+                                    if todo.completed  {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .resizable()
+                                            .frame(width: 16, height: 16)
+                                            .foregroundStyle(.green)
+                                    }
+                                }
+                                Text("\(todo.title)")
+                                    .font(.callout)
                             }
+                            .frame(height: 80)
                         }
-                        Text("\(todoList.title)")
-                            .font(.callout)
+                        .foregroundStyle(.black)
+                        Divider()
                     }
-                    .frame(height: 80)
-                    Divider()
+                    .padding(.horizontal, 16)
                 }
-                .padding(.horizontal, 16)
+                .navigationDestination(for: Todo.self) { todo in
+                    ToDoDetailView(todoDetail: todo)
+                }
             }
         }
         .onAppear {
